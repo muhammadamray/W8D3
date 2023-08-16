@@ -1,10 +1,3 @@
-// function square(num) {
-//     console.log(this)
-//     return num * num;
-// }
-
-// console.log(square(5))
-
 class Clock {
     constructor() {
         let date = new Date;
@@ -39,6 +32,30 @@ class Clock {
 
 }
 
+//const clock = new Clock()
 
 
-const clock = new Clock()
+
+
+//ADDNUMBERS
+const readline = require("readline")
+const reader = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function addNumbers(sum, numsLeft, completeionCallback) {
+    if (numsLeft > 0) { 
+        reader.question("Enter a Number: ", inputNum => {
+            sum += parseInt(inputNum);
+            console.log(`The current sum is ${sum}!`);
+            numsLeft--;
+            addNumbers(sum, numsLeft, completeionCallback);
+    })
+    } else { 
+        completeionCallback(sum)
+    };
+};
+
+addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
+
