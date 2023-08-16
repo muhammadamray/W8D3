@@ -1,10 +1,19 @@
+// function square(num) {
+//     console.log(this)
+//     return num * num;
+// }
+
+// console.log(square(5))
+
 class Clock {
     constructor() {
         let date = new Date;
         this.hours = date.getHours();
         this.minutes = date.getMinutes();
         this.seconds = date.getSeconds();
-        setInterval(this._tick, 1000);
+        setInterval(this._tick.bind(this), 1000);
+        // setInterval(() => _tick(), 1000); look this up to make sure 
+    
     };
 
     printTime() { 
@@ -29,5 +38,7 @@ class Clock {
     };
 
 }
+
+
 
 const clock = new Clock()
